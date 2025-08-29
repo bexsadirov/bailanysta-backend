@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: bailanysta
+  profiles:
+    active: dev
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${ISSUER_URI}
+
+  datasource:
+    url: jdbc:mariadb://${DB_IP_ADDRESS}:${DB_PORT}/bailanysta
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  flyway:
+    url: jdbc:mariadb://${DB_IP_ADDRESS}:${DB_PORT}/bailanysta
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    table: __flyway
+    clean-disabled: true
+    baseline-on-migrate: true
+    out-of-order: true
+
+  servlet:
+    multipart:
+      location: ${IMAGE_UPLOAD_DIRECTORY}
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  # https://stackoverflow:com/questions/40241843/failed-to-start-bean-documentationpluginsbootstrapper-in-spring-data-rest:  mvc:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+server:
+  servlet:
+    encoding:
+      force-response: true
+      charset: UTF-8
+  port: ${SERVER_PORT}
+
+app:
+  keys-path: ${KEYS_PATH}
+  issuer-uri: ${ISSUER_URI}
+  image-upload-directory: ${IMAGE_UPLOAD_DIRECTORY}
