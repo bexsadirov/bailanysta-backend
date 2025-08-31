@@ -33,7 +33,7 @@ public class SignInController {
     @ApiOperation(tags = {"Авторизация"}, value = "Авторизация пользователя")
     public Tokens signIn(@RequestBody SignInBody signInBody) throws InputException {
         User user = userService.authenticate(signInBody.username(), signInBody.password());
-        return authService.signIn(user, signInBody);
+        return authService.signIn(user);
     }
 
 }

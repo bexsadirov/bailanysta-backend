@@ -2,20 +2,19 @@ package kz.bailanysta.main.module.auth;
 
 import kz.bailanysta.main.module.user.User;
 import kz.bailanysta.main.service.AuthService;
+import kz.bailanysta.main.service.TokensService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
 
-    @Override
-    public Tokens signIn(User user, SignInBody signInBody) {
-        return null;
-    }
+    private final TokensService tokensService;
 
     @Override
-    public Tokens signIn(User user, SignUpBody signUpBody) {
-        return null;
+    public Tokens signIn(User user) {
+        return tokensService.generateTokens(user.getId());
     }
-
 }

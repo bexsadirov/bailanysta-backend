@@ -50,6 +50,18 @@ public class RSAUtil {
     }
 
     /*
+     * Getters
+     */
+    public RSAKey getRSAPublicKeyById(String keyId) {
+        for (RSAKey rsaKey : rsaPublicKeys) {
+            if (rsaKey.getKeyID().equals(keyId)) {
+                return rsaKey;
+            }
+        }
+        return null;
+    }
+
+    /*
      * Helpers
      */
     private String readFromFile(String path, String fileName) {

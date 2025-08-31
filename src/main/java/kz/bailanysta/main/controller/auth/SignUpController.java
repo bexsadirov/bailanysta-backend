@@ -36,7 +36,7 @@ public class SignUpController {
     public Tokens signUp(@RequestBody SignUpBody signUpBody) throws InputException {
         confirmationCodeService.validateCode(signUpBody.email(), signUpBody.code());
         User user = userService.create(signUpBody);
-        return authService.signIn(user, signUpBody);
+        return authService.signIn(user);
     }
 
 }
