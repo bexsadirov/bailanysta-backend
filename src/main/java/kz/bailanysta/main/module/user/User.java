@@ -1,11 +1,16 @@
 package kz.bailanysta.main.module.user;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 public class User {
 
