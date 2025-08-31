@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = ApiConfig.AUTH_API_PREFIX + "/sign-up")
+@RequestMapping(value = ApiConfig.AUTH_API_PREFIX + "sign-up")
 @Api(tags = {"Авторизация"}, value = "Auth Controller")
 @RequiredArgsConstructor
 public class SignUpController {

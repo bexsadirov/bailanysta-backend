@@ -16,7 +16,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @ApiIgnore
 @RestController
-@RequestMapping(value = ".well-known", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api/.well-known", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class WellKnownController {
 

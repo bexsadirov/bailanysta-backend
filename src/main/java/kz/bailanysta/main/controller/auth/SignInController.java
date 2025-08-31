@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = ApiConfig.AUTH_API_PREFIX + "/sign-in")
+@RequestMapping(value = ApiConfig.AUTH_API_PREFIX + "sign-in")
 @Api(tags = {"Авторизация"}, value = "Auth Controller")
 @RequiredArgsConstructor
 public class SignInController {

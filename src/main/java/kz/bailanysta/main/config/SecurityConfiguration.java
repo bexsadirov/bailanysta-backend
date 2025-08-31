@@ -29,8 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web
             .ignoring()
-            .antMatchers("/" + ApiConfig.AUTH_API_PREFIX + "/**")
-            .antMatchers("/" + ApiConfig.PUBLIC_API_PREFIX + "/**")
+            .antMatchers("/" + ApiConfig.AUTH_API_PREFIX + "**")
+            .antMatchers("/" + ApiConfig.PUBLIC_API_PREFIX + "**")
             .antMatchers("/api/.well-known/**")
             .antMatchers(SWAGGER_PATHS);
     }
@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .cors().and().authorizeRequests()
-            .antMatchers("/" + ApiConfig.PRIVATE_API_PREFIX + "/**").authenticated()
+            .antMatchers("/" + ApiConfig.PRIVATE_API_PREFIX + "**").authenticated()
             .anyRequest().permitAll()
             .and().oauth2ResourceServer().jwt();
     }

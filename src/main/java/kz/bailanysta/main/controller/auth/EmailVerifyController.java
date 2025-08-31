@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Slf4j
 @RestController
-@RequestMapping(value = ApiConfig.AUTH_API_PREFIX + "/email-verification")
+@RequestMapping(value = ApiConfig.AUTH_API_PREFIX + "email-verification")
 @Api(tags = {"Авторизация"}, value = "EmailVerifyController")
 @RequiredArgsConstructor
 public class EmailVerifyController {

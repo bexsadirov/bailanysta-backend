@@ -3,10 +3,7 @@ package kz.bailanysta.main.module.post;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +14,8 @@ import java.time.LocalDateTime;
 public class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "author_id")
