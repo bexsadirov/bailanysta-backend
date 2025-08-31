@@ -1,12 +1,14 @@
 package kz.bailanysta.main.exception;
 
+import lombok.Getter;
+
+@Getter
 public class InputException extends RuntimeException {
+    private final String messageKey;
+    private final Object[] args;
 
-    public InputException(String message, Object... args) {
-        super(message);
-    }
-
-    public InputException(String message) {
-        super(message);
+    public InputException(String messageKey, Object... args) {
+        this.messageKey = messageKey;
+        this.args = args;
     }
 }
