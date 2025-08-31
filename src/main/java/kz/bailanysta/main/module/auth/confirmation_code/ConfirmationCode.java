@@ -40,8 +40,8 @@ public class ConfirmationCode {
     @Column(name = "type")
     private Type type;
 
-    @Column(name = "destination", nullable = false)
-    private String destination;
+    @Column(name = "email", nullable = false)
+    private String email;
 
     @Column(name = "attempts")
     private int attempts;

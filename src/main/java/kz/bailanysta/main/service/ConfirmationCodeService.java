@@ -10,7 +10,7 @@ import kz.bailanysta.main.module.auth.EmailConfirmBody;
 public interface ConfirmationCodeService {
 
 
-    void sendEmail(EmailConfirmBody body, String ipAddress) throws InputException;
+    void sendEmail(EmailConfirmBody body) throws InputException;
     void deleteExpired();
 
     void validateCode(String phone, int code) throws InputException;

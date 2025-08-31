@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 interface ConfirmationCodeRepository extends JpaRepository<ConfirmationCode, Integer> {
 
 
-    ConfirmationCode findByDestination(String destination);
+    ConfirmationCode findByEmail(String email);
 
     @Transactional
     @Modifying

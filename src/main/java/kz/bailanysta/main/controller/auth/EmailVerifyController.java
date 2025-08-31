@@ -33,11 +33,10 @@ public class EmailVerifyController {
 
     @PostMapping("request-code")
     @ApiOperation(tags = {"Авторизация"}, value = "Запрос кода для подтверждения почты")
-    public void requestCode(HttpServletRequest request,
-                            @RequestBody EmailConfirmBody body) throws InputException {
+    public void requestCode(@RequestBody EmailConfirmBody body) throws InputException {
         User oldUser = userService.findByEmail(body.email());
         validateUserExistence(body, oldUser);
-        confirmationCodeService.sendEmail(body, request.getRemoteAddr());
+        confirmationCodeService.sendEmail(body);
     }
 
     @PostMapping("validate-code")

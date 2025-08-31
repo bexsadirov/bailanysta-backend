@@ -32,7 +32,7 @@ public class ConfirmationCodeServiceImpl implements ConfirmationCodeService {
     private final EmailService emailService;
 
     @Override
-    public void sendEmail(EmailConfirmBody body, String ipAddress) throws InputException {
+    public void sendEmail(EmailConfirmBody body) throws InputException {
         int code = generateRandomCode();
 
         ConfirmationCode confirmationCode = findByDestination(body.email());
@@ -42,7 +42,7 @@ public class ConfirmationCodeServiceImpl implements ConfirmationCodeService {
         } else {
             confirmationCode = new ConfirmationCode();
             validateEmail(body.email());
-            confirmationCode.setDestination(body.email());
+            confirmationCode.setEmail(body.email());
             confirmationCode.setCodes(Collections.singletonList(code).toString());
             confirmationCode.setAttempts(0);
             confirmationCode.setCreateTime(new Date());
@@ -126,8 +126,8 @@ public class ConfirmationCodeServiceImpl implements ConfirmationCodeService {
     /*
      * Finders
      */
-    private ConfirmationCode findByDestination(String destination) {
-        return confirmationCodeRepository.findByDestination(destination);
+    private ConfirmationCode findByDestination(String email) {
+        return confirmationCodeRepository.findByEmail(email);
     }
 
     /*

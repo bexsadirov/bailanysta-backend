@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
         user.setName(signUpBody.name());
         user.setSurname(signUpBody.surname());
         user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
         userRepository.save(user);
 
         // todo encode the password
