@@ -3,8 +3,10 @@ package kz.bailanysta.main.module.user_follower;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user_follower")
 public class UserFollower {
 
     @Id
