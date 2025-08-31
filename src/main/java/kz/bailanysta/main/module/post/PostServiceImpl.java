@@ -1,5 +1,6 @@
 package kz.bailanysta.main.module.post;
 
+import kz.bailanysta.main.exception.ForbiddenException;
 import kz.bailanysta.main.module.post.dto.PostDto;
 import kz.bailanysta.main.module.user.CurrUser;
 import kz.bailanysta.main.service.PostService;
@@ -27,13 +28,36 @@ public class PostServiceImpl implements PostService {
         post.setTextContent(text);
         post.setLikesCount(0);
         post.setCreatedAt(LocalDateTime.now());
-        postRepository.save(post);
+        return postRepository.save(post);
+    }
+
+    @Override
+    public Post edit(Integer postId, String text) {
+        Post post = findForAuthor(postId);
+        post.setTextContent(text);
+        return postRepository.save(post);
+    }
+
+    @Override
+    public void delete(Integer postId) {
+        Post post = findForAuthor(postId);
+        postRepository.delete(post);
+    }
+
+    /*
+     * Finders
+     */
+    private Post findForAuthor(Integer postId) {
+        Post post = findById(postId);
+        if (post == null || !post.getAuthorId().equals(CurrUser.getId())) {
+            throw new ForbiddenException();
+        }
         return post;
     }
 
     @Override
-    public PostDto edit(Integer postId, String text) {
-        return null;
+    public Post findById(Integer id) {
+        return postRepository.findById(id).orElse(null);
     }
 
     @Override

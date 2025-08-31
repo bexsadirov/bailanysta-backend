@@ -48,4 +48,19 @@ public class PostController {
         Post post = postService.create(body.text());
         return new PostDto(post, userService.findCurrentUser());
     }
+
+    @PutMapping("posts/{postId}")
+    @ApiOperation(tags = {"Кабинет"}, value = "Редактировать пост")
+    public PostDto editPost(@PathVariable Integer postId,
+                            @RequestBody PostCreateBody body) {
+        Post post = postService.edit(postId, body.text());
+        return new PostDto(post, userService.findCurrentUser());
+    }
+
+    @DeleteMapping("posts/{postId}")
+    @ApiOperation(tags = {"Кабинет"}, value = "Удалить пост")
+    public void deletePost(@PathVariable Integer postId) {
+        postService.delete(postId);
+    }
+
 }
